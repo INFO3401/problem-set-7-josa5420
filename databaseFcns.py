@@ -18,6 +18,17 @@ import parsers.py
 ####################################################
 
 def populateDatabase(databaseName, wordCounts, metaData):
+    
+    conn = sqlite.connect(databaseName)
+    c = conn.cursor()
+    c.execute(‘’’CREATE TABLE wordCounts (filename text, word text, count integer)’’’)
+    c.execute(‘’’CREATE TABLE metaData (number integer, start date, end date, president text, prior text, party text, vice text)’’’)
+    INSERT INTO wordCounts (filename, word,count) values ()
+
+    conn.commit() # save (commit) the changes
+    conn.close() # Close the connection
+
+    
     # Write a function that will populate your database
     # with the contents of the word counts and us_presidents.csv
     # to your database. 
@@ -36,6 +47,11 @@ def populateDatabase(databaseName, wordCounts, metaData):
 ####################################################
 
 def searchDatabase(databaseName, word): 
+    conn = sqlite.connect(databaseName)
+    c=conn.cursor()
+    c.execute(
+    
+    
     # Write a function that will query the database to find the 
     # president whose speech had the largest count of a specified word.
     # Inputs: A database file to search and a word to search for

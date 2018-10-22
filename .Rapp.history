@@ -1,0 +1,29 @@
+demo()
+f <- 5
+f
+data = read.csv(file="titanic.csv", head = TRUE, sep=",")
+cd
+> data = read.csv(file="./titanic.csv", head = TRUE, sep=",")
+> > data = read.csv(file=~/Desktop/"INFO 3401"/"First Stuff"/problem-set-7-josa5420/"titanic.csv", head = TRUE, sep=",")
+> > > data = read.csv(file="~/Desktop/INFO 3401/First Stuff/problem-set-7-josa5420/titanic.csv", head = TRUE, sep=",")
+source("/Users/darude/Desktop/INFO 3401/First Stuff/problem-set-7-josa5420/Assignment7.R")
+data
+d <- read.csv(file="titanic.csv", head = TRUE, sep=",")
+setwd("~/Desktop/INFO 3401/First Stuff/problem-set-7-josa5420")
+d <- read.csv(file="titanic.csv", head = TRUE, sep=",")
+d$"minor"[d$"minor" >17] <- 0
+d$"minor"[d$"minor" >17] <- 0
+names(d)
+d$"minor"[d$"Age" >17] <- 0
+d$"minor"[d$"Age" <18] <- 1
+names(d)
+aggregate("Sex" ~ "minor", data = d, FUN = average)
+aggregate("Sex" ~ "minor", data = d, FUN = length)
+aggregate("Sex ~ minor, data = d, FUN = length)
+n
+help
+t
+<-0
+help.start()
+()
+help()
