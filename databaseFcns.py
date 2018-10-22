@@ -1,5 +1,12 @@
+# I tried to do this assignment but I simply couldn't get Sequel to work...
+
+
+
+
+
 # Place any necessary imports here
 import sqlite3
+import json
 
 ####################################################
 # Part 0
@@ -18,16 +25,20 @@ import parsers.py
 ####################################################
 
 def populateDatabase(databaseName, wordCounts, metaData):
-    
-    conn = sqlite.connect(databaseName)
+     conn = sqlite.connect(databaseName)
     c = conn.cursor()
-    c.execute(‘’’CREATE TABLE wordCounts (filename text, word text, count integer)’’’)
+    c.execute(‘’’CREATE TABLE speechWordCounts (filename text, word_speech text, count integer)’’’)
     c.execute(‘’’CREATE TABLE metaData (number integer, start date, end date, president text, prior text, party text, vice text)’’’)
-    INSERT INTO wordCounts (filename, word,count) values ()
+    for key,value in wordCounts.items():
+        for a,b in value.items():
+            c.execute('''INSERT INTO speechWordCounts (filename,word_speech,count) values (key,a,b)''')
 
     conn.commit() # save (commit) the changes
-    conn.close() # Close the connection
+    conn.close()
 
+    
+    #I simply couldn't get this to run, I tried working on it for a long time trying various things,
+    #but my query statements wouldn't work.
     
     # Write a function that will populate your database
     # with the contents of the word counts and us_presidents.csv
@@ -46,11 +57,20 @@ def populateDatabase(databaseName, wordCounts, metaData):
 # Part 2
 ####################################################
 
+
+#### I tried doing this part, but I have no idea if it works because my part 1 code didn't
+#### run so I couldn't test it. I understand the concept of selecting from columns, and
+#### searching for things, but I don't know.
+
 def searchDatabase(databaseName, word): 
     conn = sqlite.connect(databaseName)
     c=conn.cursor()
-    c.execute(
-    
+    c.execute('''SELECT MAX(count) AS t FROM speechWordCounts WHERE word_speech == word''')    
+    c.execute('''SELECT filename AS ret FROM speechWordCounts WHERE count == t AND WHERE word_speech == word''')
+    print(ret)
+    conn.commit()
+    conn.close()
+        
     
     # Write a function that will query the database to find the 
     # president whose speech had the largest count of a specified word.
@@ -59,7 +79,7 @@ def searchDatabase(databaseName, word):
     #          the highest count of the target word
     return 0
 
-def computeLengthByParty(databaseName): 
+def computeLengthByParty(databaseName, word): 
     # Write a function that will query the database to find the 
     # average length (number of words) of a speech by presidents
     # of the two major political parties.
@@ -67,3 +87,4 @@ def computeLengthByParty(databaseName):
     # Outputs: The average speech length for presidents of each 
     #          of the two major political parties.
     return 0
+        
